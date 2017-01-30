@@ -1,14 +1,17 @@
-from urlparse import parse_qs, urlparse
+from cgi import parse_qs
 
-def app(environ, start_response):
-	o = parse_qs(urlparse("?" + str(environ.get('QUERY_STRING', ''))).query, keep_blank_values=True)
-	response = ''    
-	for key in list(sorted(o.keys())):
-		for val in list(o[key]): 
-			response += str(key) + "=" + str(val) + "\n"
-	status = '200 OK'
-	response_headers = [
-		('Content-Type', 'text/plain')
-	]
-	start_response(status, response_headers)
-	return [response]
+def application(environ, start_response):
+
+  query = parse_qs(environ['QUERY_STRING'], keep_blank_values=True)
+  body = []
+  for key, values in query.items():
+    for item in values:
+      body.append(key + "=" + item + "\r\n")
+   
+  status = '200 OK'
+  headers = [
+   ('Content-Type', 'text/plain')
+  ]
+  
+  start_response(status, headers)
+return body
