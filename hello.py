@@ -1,9 +1,9 @@
 from urlparse import urlparse, parse_qs
 
 def app(environ, start_response):
-	o = parse_qs(environ['QUERY_STRING'], keep_blank_values=True)
+	urls = parse_qs(environ['QUERY_STRING'], keep_blank_values=True)
 	body = []
-  	for key, values in o.items():
+  	for key, values in urls.items():
 		for item in values:
 			body.append(key + "=" + item + "\r\n")
 	
