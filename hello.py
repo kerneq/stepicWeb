@@ -1,7 +1,7 @@
-from urllib.parse import urlparse, parse_qs
+from urlparse import urlparse, parse_qs
 
 def app(environ, start_response):
-	o = parse_qs(urlparse(str(environ.get('QUERY_STRING', ''))).query, keep_blank_values=True)
+	o = parse_qs("?" + urlparse(str(environ.get('QUERY_STRING', ''))).query, keep_blank_values=True)
 	response = ''
 	for key in list(sorted(o.keys())):
     		response += key + "=" + o[key][0] + "\n"
