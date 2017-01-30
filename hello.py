@@ -1,12 +1,10 @@
 from urllib.parse import urlparse, parse_qs
 
 def app(environ, start_response):
-	o = parse_qs(urlparse("?" + str(environ.get('QUERY_STRING', ''))).query, keep_blank_values=True)
-	response = b''    
+	o = parse_qs(urlparse(str(environ.get('QUERY_STRING', ''))).query, keep_blank_values=True)
+	response = ''
 	for key in list(sorted(o.keys())):
-		for val in list(o[key]): 
-			response += bytes(str(key), encoding = 'utf-8')  + bytes(str("="), encoding = 'utf-8') + \
- 			bytes(str(val), encoding = 'utf-8') + bytes(str("\n"), encoding = 'utf-8')
+    		response += key + "=" + o[key][0] + "\n"
 	status = '200 OK'
 	response_headers = [
 		('Content-Type', 'text/plain')
