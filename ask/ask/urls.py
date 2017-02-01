@@ -26,4 +26,5 @@ urlpatterns = [
     url(r'^ask/$', views.test, name='ask'),
     url(r'^popular/$', views.test, name='popular'),
     url(r'^new/$', views.test, name='new'),
+    url(r'^question/(?P<id>[\w]+)/$', views.test2, name='new'),
 ]
