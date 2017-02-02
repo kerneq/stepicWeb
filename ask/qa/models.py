@@ -9,7 +9,7 @@ class QuestionManager(models.Manager):
         return Question.objects.order_by('-added_at')[0]
 
     def popular(self):
-        return Question.objects.order_by('rating')
+        return Question.objects.order_by('-rating')
 
 
 class Question(models.Model):

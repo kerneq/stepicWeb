@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'qa',
+    'qa.apps.QaConfig',
 ]
 
 MIDDLEWARE = [
@@ -75,11 +75,16 @@ WSGI_APPLICATION = 'ask.wsgi.application'
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
 DATABASES = {
+    # 'default': {
+    #    'ENGINE': 'django.db.backends.mysql',
+    #    'NAME':   'ask',
+    #    'USER':   'root',
+    #    'PASSWORD': '',
+    # }
+
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME':   'ask',
-        'USER':   'root',
-        'PASSWORD': '',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3')
     }
 }
 
@@ -116,6 +121,8 @@ USE_L10N = True
 
 USE_TZ = True
 
+DEBUG = False
+TEMPLATE_DEBUG = DEBUG
 ALLOWED_HOSTS = [
     '0.0.0.0',
     '127.0.0.1'

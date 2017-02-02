@@ -1,0 +1,21 @@
+Список вопросов
+<br />
+<ul>
+{% for q in questions %}
+    <li>
+        <a href="{% url 'question' q.id %}">{{ q.title }}</a>
+    </li>
+{% endfor %}
+<br />
+    <ul>
+        {% for p in paginator.page_range %}
+            {% if p == page.number %}
+                <li style="color:red;">
+            {% else %}
+                <li>
+            {% endif %}
+            <a href="{{ paginator.baseurl }}{{ p }}">{{ p }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</ul>

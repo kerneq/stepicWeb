@@ -24,7 +24,7 @@ urlpatterns = [
     url(r'^login/$', views.test, name='login'),
     url(r'^signup/$', views.test, name='signup'),
     url(r'^ask/$', views.test, name='ask'),
-    url(r'^popular/$', views.test, name='popular'),
+    url(r'^popular/$', views.test3, name='popular'),
     url(r'^new/$', views.test, name='new'),
-    url(r'^question/(?P<id>[\w]+)/$', views.test2, name='new'),
+    url(r'^question/(?P<id>[0-9]+)/$', views.test2, name='question'),
 ]
